@@ -47,7 +47,11 @@ namespace csharpcore
 
                 if (item.SellIn < 0)
                 {
-                    if (item.Name != "Aged Brie")
+                    if (item.Name == "Aged Brie")
+                    {
+                        this.QualityHelper.IncrementItemQuality(item);
+                    }
+                    else
                     {
                         if (item.Name != "Backstage passes to a TAFKAL80ETC concert")
                         {
@@ -57,10 +61,6 @@ namespace csharpcore
                         {
                             this.QualityHelper.ResetItemQuality(item);
                         }
-                    }
-                    else
-                    {
-                        this.QualityHelper.IncrementItemQuality(item);
                     }
                 }
             }
