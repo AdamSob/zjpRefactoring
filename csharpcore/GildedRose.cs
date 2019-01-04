@@ -15,51 +15,52 @@ namespace csharpcore
 
         public void UpdateQuality()
         {
-            for (var i = 0; i < Items.Count; i++)
+            foreach (Item item in this.Items)
             {
-                if (Items[i].Name == "Sulfuras, Hand of Ragnaros")
+                if (item.Name == "Sulfuras, Hand of Ragnaros")
                 {
                     continue;
                 }
-                if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
+
+                if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
                 {
-                    this.QualityHelper.DecrementItemQuality(Items[i]);
+                    this.QualityHelper.DecrementItemQuality(item);
                 }
                 else
                 {
-                    this.QualityHelper.IncrementItemQuality(Items[i]);
-                    if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
+                    this.QualityHelper.IncrementItemQuality(item);
+                    if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
                     {
-                        if (Items[i].SellIn < 11)
+                        if (item.SellIn < 11)
                         {
-                            this.QualityHelper.IncrementItemQuality(Items[i]);
+                            this.QualityHelper.IncrementItemQuality(item);
                         }
 
-                        if (Items[i].SellIn < 6)
+                        if (item.SellIn < 6)
                         {
-                            this.QualityHelper.IncrementItemQuality(Items[i]);
+                            this.QualityHelper.IncrementItemQuality(item);
                         }
                     }
                 }
 
-                    Items[i].SellIn = Items[i].SellIn - 1;
+                item.SellIn = item.SellIn - 1;
 
-                if (Items[i].SellIn < 0)
+                if (item.SellIn < 0)
                 {
-                    if (Items[i].Name != "Aged Brie")
+                    if (item.Name != "Aged Brie")
                     {
-                        if (Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
+                        if (item.Name != "Backstage passes to a TAFKAL80ETC concert")
                         {
-                                this.QualityHelper.DecrementItemQuality(Items[i]);
+                                this.QualityHelper.DecrementItemQuality(item);
                         }
                         else
                         {
-                            this.QualityHelper.ResetItemQuality(Items[i]);
+                            this.QualityHelper.ResetItemQuality(item);
                         }
                     }
                     else
                     {
-                        this.QualityHelper.IncrementItemQuality(Items[i]);
+                        this.QualityHelper.IncrementItemQuality(item);
                     }
                 }
             }
