@@ -21,6 +21,11 @@ namespace csharpcore
             item.Quality = Math.Max(item.Quality - 1, 0);
         }
 
+        private void ResetItemQuality(Item item)
+        {
+            item.Quality = 0;
+        }
+
         public void UpdateQuality()
         {
             for (var i = 0; i < Items.Count; i++)
@@ -68,7 +73,7 @@ namespace csharpcore
                         }
                         else
                         {
-                            Items[i].Quality = Items[i].Quality - Items[i].Quality;
+                            this.ResetItemQuality(Items[i]);
                         }
                     }
                     else
