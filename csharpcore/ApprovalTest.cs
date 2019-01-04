@@ -8,7 +8,7 @@ namespace csharpcore
     public class ApprovalTest
     {
         [Fact]
-        public void ThirtyDays()
+        public static void Main()
         {
             var lines = File.ReadAllLines("ThirtyDays.txt");
 
@@ -18,7 +18,8 @@ namespace csharpcore
 
             Program.Main(new string[] { });
             String output = fakeoutput.ToString();
-
+            output = output.Replace("\r","");
+            Console.WriteLine("ASDASDASDASDASS");
             var outputLines = output.Split('\n');
             for(var i = 0; i<Math.Min(lines.Length, outputLines.Length); i++) 
             {
