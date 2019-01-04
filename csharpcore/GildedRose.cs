@@ -6,24 +6,11 @@ namespace csharpcore
     public class GildedRose
     {
         IList<Item> Items;
+        QualityHelper QualityHelper;
         public GildedRose(IList<Item> Items)
         {
             this.Items = Items;
-        }
-
-        private void IncrementItemQuality(Item item)
-        {
-            item.Quality = Math.Min(item.Quality + 1, 50);
-        }
-
-        private void DecrementItemQuality(Item item)
-        {
-            item.Quality = Math.Max(item.Quality - 1, 0);
-        }
-
-        private void ResetItemQuality(Item item)
-        {
-            item.Quality = 0;
+            this.QualityHelper = new QualityHelper();
         }
 
         public void UpdateQuality()
@@ -34,23 +21,22 @@ namespace csharpcore
                 {
                     if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
                     {
-                        this.DecrementItemQuality(Items[i]);
+                        this.QualityHelper.DecrementItemQuality(Items[i]);
                     }
                 }
                 else
                 {
-                    this.IncrementItemQuality(Items[i]);
-
+                    this.QualityHelper.IncrementItemQuality(Items[i]);
                     if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
                     {
                         if (Items[i].SellIn < 11)
                         {
-                            this.IncrementItemQuality(Items[i]);
+                            this.QualityHelper.IncrementItemQuality(Items[i]);
                         }
 
                         if (Items[i].SellIn < 6)
                         {
-                            this.IncrementItemQuality(Items[i]);
+                            this.QualityHelper.IncrementItemQuality(Items[i]);
                         }
                     }
                 }
@@ -68,17 +54,17 @@ namespace csharpcore
                         {
                             if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
                             {
-                                this.DecrementItemQuality(Items[i]);
+                                this.QualityHelper.DecrementItemQuality(Items[i]);
                             }
                         }
                         else
                         {
-                            this.ResetItemQuality(Items[i]);
+                            this.QualityHelper.ResetItemQuality(Items[i]);
                         }
                     }
                     else
                     {
-                        this.IncrementItemQuality(Items[i]);
+                        this.QualityHelper.IncrementItemQuality(Items[i]);
                     }
                 }
             }
