@@ -51,16 +51,13 @@ namespace csharpcore
                     {
                         this.QualityHelper.IncrementItemQuality(item);
                     }
+                    else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+                    {
+                        this.QualityHelper.ResetItemQuality(item);
+                    }
                     else
                     {
-                        if (item.Name != "Backstage passes to a TAFKAL80ETC concert")
-                        {
-                                this.QualityHelper.DecrementItemQuality(item);
-                        }
-                        else
-                        {
-                            this.QualityHelper.ResetItemQuality(item);
-                        }
+                            this.QualityHelper.DecrementItemQuality(item);
                     }
                 }
             }
